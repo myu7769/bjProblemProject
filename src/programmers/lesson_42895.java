@@ -16,12 +16,12 @@ import java.util.*;
         수식에는 괄호와 사칙연산만 가능하며 나누기 연산에서 나머지는 무시합니다.
         최솟값이 8보다 크면 -1을 return 합니다*/
 public class lesson_42895 {
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(s.solution(5, 12));
     }
 
-    class Solution {
+    static class Solution {
 
         public int solution(int N, int number) {
             int answer = 0;
@@ -36,7 +36,7 @@ public class lesson_42895 {
             for(int i=2; i<9; i++){
                 Set<Integer> curSet = list.get(i);
 
-                for (int j = 1; j <= i/2 ; j++) {
+                for (int j = 1; j <= i ; j++) {
                     Set<Integer> set1 = list.get(j);
                     Set<Integer> set2 = list.get(i - j);
 
@@ -53,14 +53,13 @@ public class lesson_42895 {
 
                     curSet.add(Integer.parseInt(String.valueOf(N).repeat(i)));
                 }
-                for (Set<Integer> sub : list) {
-                    if (sub.contains(number)) {
-                        return list.indexOf(sub);
-                    }
-                }
 
             }
-
+            for (Set<Integer> sub : list) {
+                if (sub.contains(number)) {
+                    return list.indexOf(sub);
+                }
+            }
             return -1;
         }
     }
