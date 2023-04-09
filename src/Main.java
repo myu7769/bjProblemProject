@@ -1,35 +1,34 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-        public static void main(String[] args) throws IOException {
-            Scanner sc = new Scanner(System.in);
-            int row = sc.nextInt();
-            int col = sc.nextInt();
+    static long count;
+    static final int MAXSIZE = 100;
+    static long[] memo = new long[MAXSIZE];
 
-            int[][] arr = new int[row + 1][col + 1];
-            int[][] DP = new int[row + 1][col + 1];
-
-            for(int i = 1; i < arr.length; i++){
-                for (int j = 1; j < arr[i].length; j++) {
-                    arr[i][j] = sc.nextInt();
-                    DP[i][j] = DP[i - 1][j] + DP[i][j - 1] - DP[i - 1][j - 1] + arr[i][j];
-                }
-            }
-
-            int cntResult = sc.nextInt();
-
-            int sum = 0;
-            for(int i = 0; i<cntResult; i++){
-                sum = 0;
-                int x1 = sc.nextInt();
-                int y1 = sc.nextInt();
-                int x2 = sc.nextInt();
-                int y2 = sc.nextInt();
-                sum = DP[x2][y2] - DP[x2][y1 - 1] - DP[x1 - 1][y2] + DP[x1 - 1][y1 - 1];
-                System.out.println(sum);
-            }
+    public static void main(String[] args) {
+        Arrays.fill(memo, -1); // initialize memo with -1
+        for (int n = 50; n <= 50; n++) {
+            count = 0;
+            System.out.printf("%d: %d: %d\n", n, fib(n), count);
         }
+    }
+
+    public static long fib(int n) {
+        count++;
+        if (n == 1) {
+            return 1;
+        } else if (n == 2) {
+            return 1;
+        }
+
+        if (memo[n] == -1) {
+            memo[n] = fib(n - 2) + fib(n - 1);
+        }
+
+        return memo[n];
+    }
+
 }

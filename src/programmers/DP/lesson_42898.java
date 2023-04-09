@@ -1,4 +1,4 @@
-package programmers;
+package programmers.DP;
 
 public class lesson_42898 {
     public static void main(String[] args) {
